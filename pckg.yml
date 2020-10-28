@@ -1,18 +1,15 @@
 ---
-- hosts : test-servers
+- hosts : all
   become : true
   tasks :
     - name : install nginx
       package : pkg=nginx state=latest
-
       notify:
        - start nginx
     - name : install apache2
       package : pkg=apache2 state=latest
-      
       notify:
        - start Apache2
-
   handlers :
     - name : start nginx
       service : name=nginx state=started
