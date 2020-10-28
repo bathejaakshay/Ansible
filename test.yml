@@ -1,0 +1,18 @@
+---
+- hosts : test-servers
+  become : true
+  vars :
+      ansible_become_pass : 1  
+  tasks :
+    apt:
+        name: ['nginx']
+        state: latest
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restart
+
+... 
+
+
