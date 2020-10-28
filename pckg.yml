@@ -2,14 +2,15 @@
 - hosts : all
   become : true
   tasks :
-    - name : install nginx
-      package : pkg=nginx state=latest
-      notify:
-       - start nginx
     - name : install apache2
-      package : pkg=apache2 state=latest
-      notify:
-       - start Apache2
+      apt : name=apache2 update_cache=yes state=latest
+      notify: start Apache2
   handlers :
-    - name : start nginx
-      service : name=nginx state=started
+    - name : Reload Apache
+      service : 
+        name: apache2 
+        state: reloaded
+    - name : Restart Apache
+      service :
+        name: apache2
+        state: restarted
