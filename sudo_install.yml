@@ -1,0 +1,24 @@
+---
+- hosts: all
+  sudo: yes
+  become: true
+  tasks:
+    - name: update apt list
+      apt:
+        update_cache: yes    
+    - name: Install Apache
+      apt: name=apache2 update_cache=yes state=latest
+
+    
+  handlers:
+    - name: Reload Apache
+      service:
+        name: apache2
+        state: reloaded
+
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
+
+
