@@ -1,7 +1,6 @@
 ---
 - hosts: all
-  sudo: yes
-  become: true
+  become: yes
   tasks:
     - name: update apt list
       apt:
