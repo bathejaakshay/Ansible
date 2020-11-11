@@ -11,13 +11,7 @@
     - name: create an empty folder
       file:
         path: /root/demo_new
-        state: directory
-         
-    - name: remove an existing folder
-      file:
-        path: /root/testfolder
-        state: absent    
-  
+        state: directory  
   handlers:
     - name: Reload Apache
       service:
