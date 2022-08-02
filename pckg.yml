@@ -2,4 +2,3 @@
 - name: Add host to group with variable foo=42
   ansible.builtin.add_host:
     name: 10.150.1.244
-    inventory_dir: Bits
