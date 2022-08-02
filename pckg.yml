@@ -1,16 +1,5 @@
 ---
-- hosts : all
-  become : true
-  tasks :
-    - name : install apache2
-      apt : name=apache2 update_cache=yes state=latest
-      notify: start Apache2
-  handlers :
-    - name : Reload Apache
-      service : 
-        name: apache2 
-        state: reloaded
-    - name : Restart Apache
-      service :
-        name: apache2
-        state: restarted
+- name: Add host to group with variable foo=42
+  ansible.builtin.add_host:
+    name: 10.150.1.244
+    inventory_dir: Bits
